@@ -1,7 +1,7 @@
 /**
  * Created by Matas on 2017.08.01.
  */
-var numberOfRoutes = 50;
+var numberOfRoutes = 5;
 var routesId = [];
 var buttons = '';
 var flash = true;
@@ -94,4 +94,68 @@ $('ol').click(function (e) {
         $('.score').html(scoreDisplay);
 
     }
-});
+}); //end button click
+
+//json konstruktorius:
+
+// foreach button {
+//     if(text = flash) {
+//         flash[i] = 1
+//         top[i] = 0
+//         bonus[i] = 0
+//     } else if (text = top) {
+//         flash[i] = 0
+//         top[i] = 1
+//         bonus[i] = 0
+//     } else if (text = bonus) {
+//         flash[i] = 0
+//         top[i] = 0
+//         bonus[i] = 1
+//     } else {
+//         flash[i] = 0
+//         top[i] = 0
+//         bonus[i] = 0
+//     }
+// }
+
+
+$('.submit').click(function() {
+    var output = [];
+    var listItems = this.parentNode.parentNode.childNodes[3].childNodes[0];
+
+    for (var i = 0; i < routesId.length; i++) {
+        output[i] = {name: routesId[i]};
+        // var route = div.childNodes[0].childNodes[i];
+        var singleLi = listItems.childNodes[i];
+        // console.log(singleLi);
+
+        if (singleLi.childNodes[0].classList.contains('y')) {
+            output[i].flash = 1;
+            output[i].top = 0;
+            output[i].bonus = 0;
+        } else if (singleLi.childNodes[1].classList.contains('y')) {
+            output[i].flash = 0;
+            output[i].top = 1;
+            output[i].bonus = 0;
+        } else if (singleLi.childNodes[2]) {
+            if (singleLi.childNodes[2].classList.contains('y')) {
+                output[i].flash = 0;
+                output[i].top = 0;
+                output[i].bonus = 1;
+            }
+        } else {
+            output[i].flash = 0;
+            output[i].top = 0;
+            output[i].bonus = 0;
+        }
+
+    }
+    // var li = route.children;
+
+    // console.log(listItems);
+
+    console.log(output);
+
+
+    $('.output').html();
+}); //end submit click
