@@ -96,29 +96,6 @@ $('ol').click(function (e) {
     }
 }); //end button click
 
-//json konstruktorius:
-
-// foreach button {
-//     if(text = flash) {
-//         flash[i] = 1
-//         top[i] = 0
-//         bonus[i] = 0
-//     } else if (text = top) {
-//         flash[i] = 0
-//         top[i] = 1
-//         bonus[i] = 0
-//     } else if (text = bonus) {
-//         flash[i] = 0
-//         top[i] = 0
-//         bonus[i] = 1
-//     } else {
-//         flash[i] = 0
-//         top[i] = 0
-//         bonus[i] = 0
-//     }
-// }
-
-
 $('.submit').click(function() {
     var output = [];
     var listItems = this.parentNode.parentNode.childNodes[3].childNodes[0];
@@ -154,8 +131,8 @@ $('.submit').click(function() {
 
     // console.log(listItems);
 
-    console.log(output);
+    // console.log(output);
 
 
-    $('.output').html();
+    $('.output').html(JSON.stringify(output));
 }); //end submit click
