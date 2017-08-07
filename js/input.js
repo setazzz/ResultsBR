@@ -9,13 +9,15 @@ var top = true;
 var bonus = false;
 var scoreFlash = 0;
 var scoreTop = 0;
-var scoreDisplay = '<p class="score">Flash: ' + scoreFlash + ' Top: ' + scoreTop + '</p>';
+// var scoreDisplay = '<p class="score">Flash: ' + scoreFlash + ' Top: ' + scoreTop + '</p>';
+
+function scoreDisplay (flash, top) {
+    return 'Flash: ' + flash + ' Top: ' + top;
+}
 
 for (var i = 1; i <= numberOfRoutes; i++) {
     routesId.push('no' + i);
 }
-
-console.log(routesId);
 
 buttons += '<ol class="buttons">';
 
@@ -35,15 +37,15 @@ for(var i = 0; i < routesId.length; i++) {
 buttons += '</li></ol>';
 
 $('.routes').html(buttons);
-$('.score').html(scoreDisplay);
-
-
+$('.score').html(scoreDisplay(scoreFlash, scoreTop));
 
 for (var i = 1; i < numberOfRoutes; i++) {
     var button = 'no' + i;
-
 }
 
+// result button click event
+// marks the selected result with a className 'Y'
+// !!! Bonus does not work. next/previous should be changed
 $('ol').click(function (e) {
     console.log(e.target.tagName);
     if (e.target.tagName === 'BUTTON') {
@@ -51,17 +53,14 @@ $('ol').click(function (e) {
         const li = button.parentNode;
         const ul = li.parentNode;
         const action = button.textContent;
-        console.log(action);
         const nameActions = {
             Flash: function () {
                 if (!button.classList.contains('y')) {
                     if (button.nextElementSibling.classList.contains('y')) {
-                        button.nextElementSibling.classList.remove('y')
+                        button.nextElementSibling.classList.remove('y');
                         scoreTop--;
                     }
-                    // button.textContent = 'yra';
                     button.classList.add('y');
-                    console.log();
                     scoreTop++;
                     scoreFlash++;
                 } else {
@@ -73,12 +72,11 @@ $('ol').click(function (e) {
             Top: function () {
                 if (!button.classList.contains('y')) {
                     if (button.previousElementSibling.classList.contains('y')) {
-                        button.previousElementSibling.classList.remove('y')
+                        button.previousElementSibling.classList.remove('y');
                         scoreFlash--;
                         scoreTop--;
                     }
                     button.classList.add('y');
-                    console.log();
                     scoreTop++;
                 } else {
                     button.classList.remove('y');
@@ -90,49 +88,51 @@ $('ol').click(function (e) {
         }
 
         nameActions[action]();
-        scoreDisplay = '<p class="score">Flash: ' + scoreFlash + ' Top: ' + scoreTop + '</p>';
-        $('.score').html(scoreDisplay);
+        $('.score').html(scoreDisplay(scoreFlash, scoreTop));
 
     }
 }); //end button click
 
+// submit button click event
+// creates a json string to send to the server
 $('.submit').click(function() {
-    var output = [];
+    var output = {name: 'Matas', result: []};
     var listItems = this.parentNode.parentNode.childNodes[3].childNodes[0];
-
     for (var i = 0; i < routesId.length; i++) {
-        output[i] = {name: routesId[i]};
-        // var route = div.childNodes[0].childNodes[i];
         var singleLi = listItems.childNodes[i];
-        // console.log(singleLi);
-
         if (singleLi.childNodes[0].classList.contains('y')) {
-            output[i].flash = 1;
-            output[i].top = 0;
-            output[i].bonus = 0;
+            output.result.push(1);
         } else if (singleLi.childNodes[1].classList.contains('y')) {
-            output[i].flash = 0;
-            output[i].top = 1;
-            output[i].bonus = 0;
+            output.result.push(2);
         } else if (singleLi.childNodes[2]) {
             if (singleLi.childNodes[2].classList.contains('y')) {
-                output[i].flash = 0;
-                output[i].top = 0;
-                output[i].bonus = 1;
+                output.result.push(3);
             }
         } else {
-            output[i].flash = 0;
-            output[i].top = 0;
-            output[i].bonus = 0;
+            output.result.push(4);
         }
 
     }
-    // var li = route.children;
-
-    // console.log(listItems);
-
-    // console.log(output);
-
-
     $('.output').html(JSON.stringify(output));
 }); //end submit click
+
+// clear button click event
+// clears everything
+$('.clear').click(function() {
+    var listItems = this.parentNode.parentNode.childNodes[3].childNodes[0];
+    for (var i = 0; i < routesId.length; i++) {
+        var singleLi = listItems.childNodes[i];
+        if (singleLi.childNodes[0].classList.contains('y')) {
+            singleLi.childNodes[0].classList.remove('y');
+        } else if (singleLi.childNodes[1].classList.contains('y')) {
+            singleLi.childNodes[1].classList.remove('y');
+        } else if (singleLi.childNodes[2]) {
+            if (singleLi.childNodes[2].classList.contains('y')) {
+                singleLi.childNodes[2].classList.remove('y');
+            }
+        }
+
+    }
+    $('.score').html(scoreDisplay(scoreFlash = 0, scoreTop = 0));
+
+}); //end clear click

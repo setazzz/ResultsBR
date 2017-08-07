@@ -1,35 +1,44 @@
 <?php
 
 $allResults = json_decode(file_get_contents('AllResults.json'))->collection;
-$numberOfRoutes = count($allResults->result1) - 1;                                  // should get this number from settings
-$numberOfInputs = 3;                                                                // not done yet
+$meta = json_decode(file_get_contents('AllResults.json'))->meta;
+$numberOfRoutes = $meta->numberOfRoutes;
+$numberOfInputs = count((array)$allResults);
 
 function singleClimber($resultIndex) {
     return 'result' . $resultIndex;
 }
 
-function singleTableLineOutput($climberId, $results, $climberNumber) {
+function singleTableLineOutput($routes, $results, $climberNumber) {
     $thisClimberId = singleClimber($climberNumber);
     $thisClimber = $results->$thisClimberId;
-    echo '<tr><td>' . $thisClimber[$climberId]->name . '</td>';
-    for ($i = 0; $i < $climberId; $i++) {
-        if($thisClimber[$i]->flash == 1) {
+    $scoreFlash = 0;
+    $scoreTop = 0;
+    $scoreBonus = 0;
+
+    echo '<tr><td>' . $thisClimber[0]->name . '</td>';
+
+    for ($i = 0; $i < $routes; $i++) {
+        if($thisClimber[0]->result[$i] == 1) {
             echo '<td>F</td>';
-        } elseif ($thisClimber[$i]->top == 1) {
+            $scoreFlash++;
+            $scoreTop++;
+            $scoreBonus++;
+        } elseif ($thisClimber[0]->result[$i] == 2) {
             echo '<td>T</td>';
-        } elseif ($thisClimber[$i]->bonus) {
-            if ($thisClimber[$i]->bonus == 1) {
-                echo '<td>B</td>';
-            }
+            $scoreTop++;
+            $scoreBonus++;
+        } elseif ($thisClimber[0]->result[$i] == 3) {
+            echo '<td>B</td>';
+            $scoreBonus++;
         } else {
             echo '<td>0</td>';
-
         }
 
     }
-    echo '<td>' . $thisClimber[$climberId]->flash . '</td>';
-    echo '<td>' . $thisClimber[$climberId]->top . '</td>';
-    echo '<td>' . $thisClimber[$climberId]->bonus . '</td>';
+    echo '<td>' . $scoreFlash . '</td>';
+    echo '<td>' . $scoreTop . '</td>';
+    echo '<td>' . $scoreBonus . '</td>';
 }
 
 // Start a table and put headings

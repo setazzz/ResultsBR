@@ -1,61 +1,17 @@
 {
   "collection": {
     "result1":[
-      {
-        "name": "no1", "flash": 0, "top": 1, "bonus": 0
-      },
-      {
-        "name": "no2", "flash": 0, "top": 1, "bonus": 0
-      },
-      {
-        "name": "no3", "flash": 0, "top": 0, "bonus": 0
-      },
-      {
-        "name": "no4", "flash": 1, "top": 0, "bonus": 0
-      },
-      {
-        "name": "no5", "flash": 0, "top": 1, "bonus": 0},
-      {
-        "name": "Matas", "flash": 2, "top": 5, "bonus": 0
-      }
+      {"name":"Matas","result":[1,2,2,3,4]}
     ],
     "result2":[
-      {
-        "name": "no1", "flash": 0, "top": 1, "bonus": 0
-      },
-      {
-        "name": "no2", "flash": 0, "top": 1, "bonus": 0
-      },
-      {
-        "name": "no3", "flash": 0, "top": 0, "bonus": 0
-      },
-      {
-        "name": "no4", "flash": 1, "top": 0, "bonus": 0
-      },
-      {
-        "name": "no5", "flash": 0, "top": 0, "bonus": 1},
-      {
-        "name": "Jonas", "flash": 1, "top": 4, "bonus": 1
-      }
+      {"name":"Jonas","result":[1,2,3,1,4]}
     ],
     "result3":[
-      {
-        "name": "no1", "flash": 1, "top": 1, "bonus": 0
-      },
-      {
-        "name": "no2", "flash": 0, "top": 1, "bonus": 0
-      },
-      {
-        "name": "no3", "flash": 1, "top": 0, "bonus": 0
-      },
-      {
-        "name": "no4", "flash": 1, "top": 0, "bonus": 0
-      },
-      {
-        "name": "no5", "flash": 0, "top": 0, "bonus": 1},
-      {
-        "name": "Petras", "flash": 4, "top": 4, "bonus": 5
-      }
+      {"name":"Petras","result":[3,2,2,1,4]}
     ]
+  },
+  "meta": {
+    "name": "sd",
+    "numberOfRoutes": 5
   }
 }
