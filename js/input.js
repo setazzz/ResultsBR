@@ -9,7 +9,6 @@ var top = true;
 var bonus = false;
 var scoreFlash = 0;
 var scoreTop = 0;
-// var scoreDisplay = '<p class="score">Flash: ' + scoreFlash + ' Top: ' + scoreTop + '</p>';
 
 function scoreDisplay (flash, top) {
     return 'Flash: ' + flash + ' Top: ' + top;
@@ -45,7 +44,7 @@ for (var i = 1; i < numberOfRoutes; i++) {
 
 // result button click event
 // marks the selected result with a className 'Y'
-// !!! Bonus does not work. next/previous should be changed
+// TODO !!! Bonus does not work. next/previous should be changed
 $('ol').click(function (e) {
     console.log(e.target.tagName);
     if (e.target.tagName === 'BUTTON') {
@@ -98,7 +97,7 @@ $('ol').click(function (e) {
 $('.submit').click(function() {
     var output = {name: 'Matas', result: []};
     var listItems = this.parentNode.parentNode.childNodes[3].childNodes[0];
-    for (var i = 0; i < routesId.length; i++) {
+    for (var i = 0; i < numberOfRoutes; i++) {
         var singleLi = listItems.childNodes[i];
         if (singleLi.childNodes[0].classList.contains('y')) {
             output.result.push(1);
@@ -114,6 +113,7 @@ $('.submit').click(function() {
 
     }
     $('.output').html(JSON.stringify(output));
+
 }); //end submit click
 
 // clear button click event
@@ -134,5 +134,6 @@ $('.clear').click(function() {
 
     }
     $('.score').html(scoreDisplay(scoreFlash = 0, scoreTop = 0));
+
 
 }); //end clear click
