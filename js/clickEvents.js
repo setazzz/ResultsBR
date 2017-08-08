@@ -53,27 +53,43 @@ $('ol').click(function (e) {
 // submit button click event
 // creates a json string and saves it
 $('.submit').click(function() {
-    var output = {name: climberName, result: []};
+    var output = {result: [], total: [0,0,0]};
     var listItems = this.parentNode.parentNode.childNodes[3].childNodes[0];
     var climberName = document.getElementById("userName").value;
+
+    var radios = document.getElementsByName('userSex');
+    for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            var climberSex = radios[i].value;
+            break;
+        }
+    }
+
+    var climberPro = document.getElementById("userGroup").checked;
+    output.sex = climberSex;
+    output.pro = climberPro;
     output.name = climberName;
     for (var i = 0; i < numberOfRoutes; i++) {
         var singleLi = listItems.childNodes[i];
         if (singleLi.childNodes[0].classList.contains('y')) {
             output.result.push(1);
+            output.total[0]++;
+            output.total[1]++;
+            output.total[2]++;
         } else if (singleLi.childNodes[1].classList.contains('y')) {
             output.result.push(2);
+            output.total[1]++;
+            output.total[2]++;
         } else if (singleLi.childNodes[2]) {
             if (singleLi.childNodes[2].classList.contains('y')) {
                 output.result.push(3);
+                output.total[2]++;
             }
         } else {
             output.result.push(4);
         }
     }
 
-    console.log('submit clicked');
-    console.log(climberName);
     // Post results to saveResults.php
     $.ajax({
         type: 'POST',

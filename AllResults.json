@@ -1,17 +1,21 @@
 {
-  "collection": {
-    "result1":[
-      {"name":"Matas","result":[1,2,2,3,4]}
-    ],
-    "result2":[
-      {"name":"Jonas","result":[1,2,3,1,4]}
-    ],
-    "result3":[
-      {"name":"Petras","result":[3,2,2,1,4]}
+  "collection":{
+    "results":[
+      {"result":["1","1","1","1","1"],"total":["5","5","5"],"name":"Martynas","sex":"male","pro":"false"},
+      {"result":["2","1","1","1","1"],"total":["4","5","5"],"name":"Julius","sex":"male","pro":"false"},
+      {"result":["2","2","1","1","1"],"total":["3","5","5"],"name":"Justas","sex":"male","pro":"false"},
+      {"result":["2","2","1","2","1"],"total":["2","5","5"],"name":"Andrius","sex":"male","pro":"false"},
+      {"result":["4","1","1","1","1"],"total":["4","4","4"],"name":"Petras","sex":"male","pro":"false"},
+      {"result":["4","2","3","1","1"],"total":["3","3","4"],"name":"Algirdas","sex":"male","pro":"false"},
+      {"result":[1,2,3,1,4],"total":["2","3","4"],"name":"Jonas","sex":"male","pro":"true"},
+      {"result":[1,2,2,3,4],"total":["1","3","4"],"name":"Matas","sex":"male","pro":"true"},
+      {"result":[3,2,2,1,4],"total":["2","3","4"],"name":"Ona","sex":"female","pro":"false"},
+      {"result":["1","2","4","2","4"],"total":["2","4","4"],"name":"Maryte","sex":"female","pro":"false"}
     ]
   },
-  "meta": {
-    "name": "sd",
-    "numberOfRoutes": 5
+  "meta":{
+    "name":"sd",
+    "numberOfRoutes":5
   }
 }
+
