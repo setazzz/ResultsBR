@@ -1,3 +1,1 @@
-[
-  {"name":"Matas","result":[1,2,2,1,4]}
-]
+{"collection":{"results":[{"name":"Matas","result":[1,2,2,3,4]},{"name":"Jonas","result":[1,2,3,1,4]},{"name":"Petras","result":[3,2,2,1,4]}]},"meta":{"name":"sd","numberOfRoutes":5}}
