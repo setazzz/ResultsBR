@@ -1,9 +1,10 @@
 /**
  * Created by Matas on 2017.08.01.
  */
-var numberOfRoutes = 5;
+var numberOfRoutes = 5; //todo get this number from settings
 var routesId = [];
 var buttons = '';
+var climberName = '';
 var flash = true;
 var top = true;
 var bonus = false;
@@ -95,7 +96,7 @@ $('ol').click(function (e) {
 // submit button click event
 // creates a json string to send to the server
 $('.submit').click(function() {
-    var output = {name: 'Matas', result: []};
+    var output = {name: climberName, result: []};
     var listItems = this.parentNode.parentNode.childNodes[3].childNodes[0];
     for (var i = 0; i < numberOfRoutes; i++) {
         var singleLi = listItems.childNodes[i];
@@ -112,7 +113,19 @@ $('.submit').click(function() {
         }
 
     }
-    $('.output').html(JSON.stringify(output));
+
+    // Post results to saveResults.php
+    $.ajax({
+        type: 'POST',
+        url: 'saveResults.php',
+        data: {'categories': output},
+        success: function(msg) {
+            alert('laip');
+        },
+        failure: function (errMsg) {
+            alert(errMsg + 'lai');
+        }
+    });
 
 }); //end submit click
 
