@@ -5,6 +5,7 @@
  * Date: 2017.08.07
  * Time: 14:40
  */
+
 if(isset($_POST['output'])) {
     $json = $_POST['output'];
     $new_input = $json;

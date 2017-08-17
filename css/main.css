@@ -1,60 +1,118 @@
+/* Main selectors ---------------------- */
+
+* {
+    border: solid red 2px;
+}
+
 body {
-    /*background-color: aquamarine;*/
+    max-width: 510px;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
 }
 
 button {
-    font-size: 200%;
+    font-size: 2em;
     border-style: solid;
-    border-radius: 10px;
-    height: 60px;
-    width: 30%;
+    border-radius: 30px;
+    height: 1.5em;
+    max-width: 200px;
+
 }
+
+ol {
+    padding: 0 10%;
+}
+
+/*Button selectors ------------ */
 
 ol button{
     background-color: aqua;
     border-color: blue;
-    margin-left: 2%;
+    width: 48%;
+    margin: 0 1%;
 }
 
-ol li button.y {
+.input-btn {
+    margin:auto;
+}
+
+.y {
     background-color: blueviolet;
 }
 
 ol li {
-    margin-bottom: 2%;
-    margin-left: 10%;
+    padding: 1% 0;
+    /*margin: auto;*/
 }
+
 
 .score {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2rem;
 }
 
-span button {
-    border-style: solid;
-    border-radius: 10px;
-    /*margin-left: 35%;*/
+.entry-buttons {
+    margin: 0 10%;
 }
 
-span .submit {
-    margin-left: 5%;
+.submit, .clear{
+    width: 48%;
+    margin: 0 1%;
+}
+
+.submit {
     background-color: green;
     border-color: darkgreen;
 }
 
-span .clear {
-    margin-left: 15%;
+.clear {
     background-color: red;
     border-color: darkred;
+}
 
+.formList {
+    list-style: none;
+    padding: 0;
+}
+
+.formLine input{
+    margin: auto;
+    display: inline-block;
+    align-content: center;
 }
 
 
+/* Form selectors ------------ */
 
-@media only screen and (max-width: 500px) {
+#userName {
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+
+/* Responsive ---------------------- */
+
+/* big screen */
+@media only screen and (min-width: 1024px) {
     body {
         background-color: red;
     }
 }
+
+
+/* Smallest screen */
+@media only screen and (max-width: 300px) {
+    button {
+        font-size: initial;
+    }
+    .score {
+        font-size: initial;
+    }
+}
+
 
 

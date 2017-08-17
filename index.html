@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <title>Rezultatu ivedimas</title>
     <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width">
 
 
 </head>
 <body>
     <h1>Rezultatai</h1>
+    <a href="resultsTableOutput.php" target="_blank">Results</a><br>
+
     <div class="routes">
 
     </div>
     <p class="score"></p>
-    <span>
+    <div class="entry-buttons">
         <button class="clear">Clear</button><button class="submit">Submit</button>
-    </span>
+    </div>
     <p class="output"></p>
-    <a href="resultsTableOutput.php" target="_blank">Rezultatai</a><br>
     <form>
-        <input type="text" id="userName">Name<br>
-        <input type="radio" name="userSex" value="male" checked>Male
-        <input type="radio" name="userSex" value="female">Female
-        <input type="checkbox" id="userGroup" value="pro">I am pro!
+        <ul class="formList">
+            <li class="formLine"><input type="text" id="userName" placeholder="Name"><br></li>
+            <li class="formLine"><input type="radio" name="userSex" value="male" id="male" checked><label for="male">Male</label></li>
+            <li class="formLine"><input type="radio" name="userSex" value="female" id="female"><label for="female">Female</label></li>
+            <li class="formLine"><input type="checkbox" id="userGroup" value="pro"><label for="userGroup">I am a pro!</label></li>
+        </ul>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/functions.js"></script>
