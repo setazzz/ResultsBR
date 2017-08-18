@@ -22,6 +22,6 @@ if(isset($_POST['output'])) {
 //    header('location: resultsTableOutput.php');
 } else {
     echo '<h1>Access denied</h1>';
-    echo '<a href="index.html">Įvesti rezultatą</a>';
+    echo '<a href="index.php">Įvesti rezultatą</a>';
 }
 
