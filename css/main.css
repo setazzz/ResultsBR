@@ -27,8 +27,40 @@ ol {
     padding: 0 10%;
 }
 
-td {
+/* Table styles ----------------- */
+table * {
+    border: solid blue 1px;
+}
+
+table {
+    border-spacing: 0;
+    margin: 0 auto 1em;
+    border: solid blue 1px;
+}
+
+
+
+.column-route,
+.column-flash,
+.column-top,
+.column-bonus,
+.column-pro {
     text-align: center;
+}
+
+.column-name {
+    text-align: left;
+    min-width: 100px;
+}
+
+.column-route {
+    min-width: 1em;
+}
+
+.column-flash,
+.column-top,
+.column-bonus {
+    min-width: 2em;
 }
 
 /*Button selectors ------------ */
