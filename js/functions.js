@@ -8,7 +8,7 @@ function scoreDisplay (flash, top) {
     return 'Flash: ' + flash + ' Top: ' + top;
 }
 
-function makeButtons(ammount, fl, tp, bn) {
+function makeButtons(ammount, fl, tp) {
     buttons += '<ol class="buttons">';
 
     for(var i = 0; i < ammount; i++) {
@@ -19,9 +19,6 @@ function makeButtons(ammount, fl, tp, bn) {
         }
         if (tp) {
             buttons += '<button class="top">Top</button>';
-        }
-        if (bn) {
-            buttons += '<button class="bonus">Bonus</button>';
         }
         buttons += '</div></li>';
     }

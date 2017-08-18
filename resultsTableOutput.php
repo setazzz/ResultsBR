@@ -9,7 +9,6 @@ function singleTableLineOutput($routes, $results, $climberNumber) {
     $thisClimber = $results[$climberNumber];
     $scoreFlash = intval($thisClimber->total[0]);
     $scoreTop = intval($thisClimber->total[1]);
-    $scoreBonus = intval($thisClimber->total[2]);
 
     echo '<tr><td class="column-name">' . $thisClimber->name . '</td>';
     for ($i = 0; $i < $routes; $i++) {
@@ -17,7 +16,6 @@ function singleTableLineOutput($routes, $results, $climberNumber) {
     }
     echo '<td class="column-flash">' . $scoreFlash . '</td>';
     echo '<td class="column-top">' . $scoreTop . '</td>';
-    echo '<td class="column-bonus">' . $scoreBonus . '</td>';
     echo '<td class="column-pro">';
     if ($thisClimber->pro == '1') {
         echo '+';
@@ -40,7 +38,6 @@ for ($i = 0; $i < $numberOfRoutes; $i++) {
 }
 echo '<th class="column-flash">Flash</th>
       <th class="column-top">Top</th> 
-      <th class="column-bonus">Bonus</th>
       <th class="column-pro">Pro</th>
       </tr></thead><tbody>';
 
@@ -67,7 +64,6 @@ for ($i = 0; $i < $numberOfRoutes; $i++) {
 }
 echo '<th class="column-flash">Flash</th>
       <th class="column-top">Top</th> 
-      <th class="column-bonus">Bonus</th>
       <th class="column-pro">Pro</th>
       </tr></thead><tbody>';
 

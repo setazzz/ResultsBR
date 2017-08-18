@@ -40,8 +40,6 @@ $('ol').click(function (e) {
                     button.classList.remove('y');
                     scoreTop--;
                 }
-            },
-            Bonus: function () {
             }
         }
         nameActions[action]();
@@ -53,7 +51,7 @@ $('ol').click(function (e) {
 // creates a json string and saves it
 $('.submit').click(function() {
     // declare vars
-    var output = {result: [], total: [0,0,0]};
+    var output = {result: [], total: [0,0]};
     var climberName = $("#userName").val();
     var climberPro = $("#userGroup:checked").length;
     var radios = $('[name=userSex]');
@@ -82,16 +80,9 @@ $('.submit').click(function() {
                 output.result.push('F');
                 output.total[0]++;
                 output.total[1]++;
-                output.total[2]++;
             } else if (listButtons[1].classList.contains('y')) {
                 output.result.push('T');
                 output.total[1]++;
-                output.total[2]++;
-            } else if (listButtons[2]) {
-                if (listButtons[2].classList.contains('y')) {
-                    output.result.push('B');
-                    output.total[2]++;
-                }
             } else {
                 output.result.push('');
             }
@@ -114,11 +105,6 @@ $('.submit').click(function() {
                     successMsg += 'an amateur. ';
                 }
                 successMsg += '</br>Your result is: ' + output.total[0] + 'F/ ' + output.total[1] + 'T';
-                if (bonus) {
-                    successMsg += output.total[2];
-                    successMsg += '/B';
-                }
-                successMsg += '.';
                 $('.output').html(successMsg);
                 // alert('Your result was successfully saved. To see full results press the link at the bottom of a page.');
             },
@@ -140,10 +126,6 @@ $('.clear').click(function() {
             listButtons[0].classList.remove('y');
         } else if (listButtons[1].classList.contains('y')) {
             listButtons[1].classList.remove('y');
-        } else if (listButtons[2]) {
-            if (listButtons[2].classList.contains('y')) {
-                listButtons[2].classList.remove('y');
-            }
         }
     }
     $('.score').html(scoreDisplay(scoreFlash = 0, scoreTop = 0));

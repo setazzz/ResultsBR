@@ -10,6 +10,6 @@ var bonus = false;
 var scoreFlash = 0;
 var scoreTop = 0;
 
-$('.routes').html(makeButtons(numberOfRoutes, flash, top, bonus));
+$('.routes').html(makeButtons(numberOfRoutes, flash, top));
 
 $('.score').html(scoreDisplay(scoreFlash, scoreTop));
