@@ -67,9 +67,9 @@ $('.submit').click(function() {
     }
 
     // check if Name is entered
-    if (climberName.replace(/\s/g, '') === '') {
+    if (!climberName.replace(/\s/g, '') === '') {
         alert('Please enter Your name.');
-    } else if(!checked) {
+    } else if(checked) {
         alert('Please select your gender.');
     } else {
         output.sex = climberSex;
@@ -103,33 +103,30 @@ $('.submit').click(function() {
             url: 'saveResults.php',
             data: {'output': output},
             success: function(msg) {
-                var successMsg = 'Your name is: ';
-                successMsg += output.name;
-                successMsg += '. Sex: ';
-                successMsg += output.sex;
-                successMsg += '. You are ';
+                $('.input-content')[0].classList.add('hide');
+                $('form')[0].classList.add('hide');
+                var successMsg = 'Your name is: ' + output.name + '</br>';
+                successMsg += 'Sex: ' + output.sex + '</br>';
+                successMsg += 'You are ';
                 if (output.pro) {
                     successMsg += 'a pro. ';
                 } else {
                     successMsg += 'an amateur. ';
                 }
-                successMsg += 'Your result is: ';
-                successMsg += output.total[0];
-                successMsg += 'F/ ';
-                successMsg += output.total[1];
-                successMsg += 'T';
+                successMsg += '</br>Your result is: ' + output.total[0] + 'F/ ' + output.total[1] + 'T';
                 if (bonus) {
                     successMsg += output.total[2];
                     successMsg += '/B';
                 }
                 successMsg += '.';
-                $('.input-content')[0].classList.add('hide');
-                alert('Your result was successfully saved. To see full results press the link at the bottom of a page. ' + successMsg);
+                $('.output').html(successMsg);
+                // alert('Your result was successfully saved. To see full results press the link at the bottom of a page.');
             },
             failure: function (errMsg) {
                 alert(errMsg);
             }
         });
+
     }
 
 }); //end submit click

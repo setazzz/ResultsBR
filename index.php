@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Enter Your result</title>
     <?php include('includes/Head.html'); ?>
 </head>
 <body>
-    <h1>Rezultatai</h1>
     <?php include('includes/UserInputForm.html'); ?>
     <a href="results.php" target="_blank">Results</a><br>
     <div class="input-content">
