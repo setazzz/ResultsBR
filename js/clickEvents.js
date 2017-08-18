@@ -54,12 +54,14 @@ $('ol').click(function (e) {
 $('.submit').click(function() {
     // declare vars
     var output = {result: [], total: [0,0,0]};
-    var climberName = document.getElementById("userName").value;
-    var climberPro = document.getElementById("userGroup").checked;
-    var radios = document.getElementsByName('userSex');
+    var climberName = $("#userName").val();
+    var climberPro = $("#userGroup:checked").length;
+    var radios = $('[name=userSex]');
+    var checked = false;
     for (var i = 0, length = radios.length; i < length; i++) {
         if (radios[i].checked) {
             var climberSex = radios[i].value;
+            checked = true;
             break;
         }
     }
@@ -67,30 +69,31 @@ $('.submit').click(function() {
     // check if Name is entered
     if (climberName.replace(/\s/g, '') === '') {
         alert('Please enter Your name.');
+    } else if(!checked) {
+        alert('Please select your gender.');
     } else {
         output.sex = climberSex;
         output.pro = climberPro;
         output.name = climberName;
 
         for (var i = 1; i <= numberOfRoutes; i++) {
-            var listButtons = document.getElementsByClassName('no' + i)[0].firstElementChild.children;
-            // console.log(listButtons[0]);
+            var listButtons = $('.no' + i)[0].firstElementChild.children;
             if (listButtons[0].classList.contains('y')) {
-                output.result.push(1);
+                output.result.push('F');
                 output.total[0]++;
                 output.total[1]++;
                 output.total[2]++;
             } else if (listButtons[1].classList.contains('y')) {
-                output.result.push(2);
+                output.result.push('T');
                 output.total[1]++;
                 output.total[2]++;
             } else if (listButtons[2]) {
                 if (listButtons[2].classList.contains('y')) {
-                    output.result.push(3);
+                    output.result.push('B');
                     output.total[2]++;
                 }
             } else {
-                output.result.push(4);
+                output.result.push('');
             }
         }
 
@@ -120,6 +123,7 @@ $('.submit').click(function() {
                     successMsg += '/B';
                 }
                 successMsg += '.';
+                $('.input-content')[0].classList.add('hide');
                 alert('Your result was successfully saved. To see full results press the link at the bottom of a page. ' + successMsg);
             },
             failure: function (errMsg) {

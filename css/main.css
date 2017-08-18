@@ -1,10 +1,11 @@
 /* Main selectors ---------------------- */
 
 * {
-    border: solid red 2px;
+    /*border: solid red 2px;*/
 }
 
 body {
+    background-color: rgba(0, 255, 255, 0.1);
     max-width: 510px;
     margin: auto;
     font-family: sans-serif;
@@ -17,20 +18,23 @@ h1 {
 button {
     font-size: 2em;
     border-style: solid;
-    border-radius: 30px;
+    border-radius: 0.75em;
     height: 1.5em;
     max-width: 200px;
-
 }
 
 ol {
     padding: 0 10%;
 }
 
+td {
+    text-align: center;
+}
+
 /*Button selectors ------------ */
 
 ol button{
-    background-color: aqua;
+    background-color: #00ffff;
     border-color: blue;
     width: 48%;
     margin: 0 1%;
@@ -46,7 +50,6 @@ ol button{
 
 ol li {
     padding: 1% 0;
-    /*margin: auto;*/
 }
 
 
@@ -85,13 +88,19 @@ ol li {
     align-content: center;
 }
 
-
 /* Form selectors ------------ */
 
-#userName {
-    display: block;
+form {
+    font-size: 1.5em;
+    margin: auto;
+}
+ul li {
     margin: auto;
     width: 60%;
+}
+#userName {
+    font-size: 1.5rem;
+    width: 100%;
 }
 
 /* Responsive ---------------------- */
@@ -103,7 +112,6 @@ ol li {
     }
 }
 
-
 /* Smallest screen */
 @media only screen and (max-width: 300px) {
     button {
@@ -114,5 +122,6 @@ ol li {
     }
 }
 
-
-
+.hide {
+    display: none;
+}

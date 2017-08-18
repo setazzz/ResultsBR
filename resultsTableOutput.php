@@ -17,22 +17,15 @@ function singleTableLineOutput($routes, $results, $climberNumber) {
 
     echo '<tr><td>' . $thisClimber->name . '</td>';
     for ($i = 0; $i < $routes; $i++) {
-        if($thisClimber->result[$i] == 1) {
-            echo '<td>F</td>';
-        } elseif ($thisClimber->result[$i] == 2) {
-            echo '<td>T</td>';
-        } elseif ($thisClimber->result[$i] == 3) {
-            echo '<td>B</td>';
-        } else {
-            echo '<td>0</td>';
-        }
-
+        echo '<td>' . $thisClimber->result[$i] . '</td>';
     }
     echo '<td>' . $scoreFlash . '</td>';
     echo '<td>' . $scoreTop . '</td>';
     echo '<td>' . $scoreBonus . '</td>';
     echo '<td>' . $thisClimber->pro . '</td>';
 }
+
+echo '<h1>' . $meta->name . '</h1>';
 
 // Start a table and put headings
 echo '<table id="male"><thead><tr><th>Name</th>';
