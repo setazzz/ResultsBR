@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <title>Results</title>
-    <?php include('includes/Head.html'); ?>
+    <?php include('inc/Head.html'); ?>
 </head>
 <body>
     <?php include 'resultsTableOutput.php';?>
 
-    <?php include('includes/Scripts.html'); ?>
+    <?php include('inc/Scripts.html'); ?>
 </body>
 </html>
 

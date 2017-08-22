@@ -4,46 +4,46 @@
 
 // result button click event
 // marks the selected result with a className 'Y'
-// TODO !!! Bonus does not work. next/previous should be changed
+// TODO !!! next/previous should be changed
 $('ol').click(function (e) {
     if (e.target.tagName === 'BUTTON') {
         const button = e.target;
-        const li = button.parentNode;
+        const li = button.parentNode.parentNode;
         const ul = li.parentNode;
         const action = button.textContent;
+        const points = getDifficulty(li) * 10;
+        const selected = button.classList.contains('y');
         const nameActions = {
             Flash: function () {
-                if (!button.classList.contains('y')) {
+                if (!selected) {
                     if (button.nextElementSibling.classList.contains('y')) {
                         button.nextElementSibling.classList.remove('y');
-                        scoreTop--;
+                        score -= points;
                     }
                     button.classList.add('y');
-                    scoreTop++;
-                    scoreFlash++;
+                    score += points * 1.2;
                 } else {
                     button.classList.remove('y');
-                    scoreTop--;
-                    scoreFlash--;
+                    score -= points * 1.2;
                 }
             },
             Top: function () {
-                if (!button.classList.contains('y')) {
+                if (!selected) {
                     if (button.previousElementSibling.classList.contains('y')) {
                         button.previousElementSibling.classList.remove('y');
-                        scoreFlash--;
-                        scoreTop--;
+                        score -= points * 1.2;
                     }
                     button.classList.add('y');
-                    scoreTop++;
+                    score += points;
                 } else {
                     button.classList.remove('y');
-                    scoreTop--;
+                    score -= points;
                 }
             }
         }
+
         nameActions[action]();
-        $('.score').html(scoreDisplay(scoreFlash, scoreTop));
+        $('.score').html(scoreDisplay(score));
     }
 }); //end button click
 
@@ -51,7 +51,7 @@ $('ol').click(function (e) {
 // creates a json string and saves it
 $('.submit').click(function() {
     // declare vars
-    var output = {result: [], total: [0,0]};
+    var output = {result: [], total: 0};
     var climberName = $("#userName").val();
     var climberPro = $("#userGroup:checked").length;
     var radios = $('[name=userSex]');
@@ -65,28 +65,27 @@ $('.submit').click(function() {
     }
 
     // check if Name is entered
-    if (!climberName.replace(/\s/g, '') === '') {
+    if (climberName.replace(/\s/g, '') === '') {
         alert('Please enter Your name.');
-    } else if(checked) {
+    } else if(!checked) {
         alert('Please select your gender.');
     } else {
         output.sex = climberSex;
         output.pro = climberPro;
         output.name = climberName;
-
+        output.total = score;
         for (var i = 1; i <= numberOfRoutes; i++) {
             var listButtons = $('.no' + i)[0].firstElementChild.children;
             if (listButtons[0].classList.contains('y')) {
                 output.result.push('F');
-                output.total[0]++;
-                output.total[1]++;
             } else if (listButtons[1].classList.contains('y')) {
                 output.result.push('T');
-                output.total[1]++;
             } else {
                 output.result.push('');
             }
         }
+
+        console.log(output);
 
         // Post results to saveResults.php
         $.ajax({
@@ -104,7 +103,7 @@ $('.submit').click(function() {
                 } else {
                     successMsg += 'an amateur. ';
                 }
-                successMsg += '</br>Your result is: ' + output.total[0] + 'F/ ' + output.total[1] + 'T';
+                successMsg += '</br>Your result is: ' + output.total;
                 $('.output').html(successMsg);
                 // alert('Your result was successfully saved. To see full results press the link at the bottom of a page.');
             },
@@ -128,5 +127,5 @@ $('.clear').click(function() {
             listButtons[1].classList.remove('y');
         }
     }
-    $('.score').html(scoreDisplay(scoreFlash = 0, scoreTop = 0));
+    $('.score').html(scoreDisplay(score = 0));
 }); //end clear click

@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <title>Enter Your result</title>
-    <?php include('includes/Head.html'); ?>
+    <?php include('inc/Head.html'); ?>
 </head>
 <body>
-    <?php include('includes/UserInputForm.html'); ?>
+    <?php include('inc/UserInputForm.html'); ?>
     <a href="results.php" target="_blank">Results</a><br>
     <div class="input-content">
         <div class="routes">
@@ -17,6 +17,6 @@
     </div>
     <p class="output"></p>
 
-    <?php include('includes/Scripts.html'); ?>
+    <?php include('inc/Scripts.html'); ?>
 </body>
 </html>

@@ -23,6 +23,33 @@ button {
     max-width: 200px;
 }
 
+.lvl1 button,
+.column-route.lvl1 {
+    background-color: green;
+}
+
+.lvl2 button,
+.column-route.lvl2 {
+    background-color: yellow;
+}
+
+.lvl3 button,
+.column-route.lvl3  {
+    background-color: blue;
+    color: white;
+}
+
+.lvl4 button,
+.column-route.lvl4 {
+    background-color: red;
+}
+
+.lvl5 button,
+.column-route.lvl5 {
+    background-color: black;
+    color: white;
+}
+
 ol {
     padding: 0 10%;
 }
@@ -76,7 +103,7 @@ ol button{
     margin:auto;
 }
 
-.y {
+button.y {
     background-color: blueviolet;
 }
 

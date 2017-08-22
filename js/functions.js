@@ -4,8 +4,8 @@
 
 
 
-function scoreDisplay (flash, top) {
-    return 'Flash: ' + flash + ' Top: ' + top;
+function scoreDisplay (flash) {
+    return 'Your score: ' + flash;
 }
 
 function makeButtons(ammount, fl, tp) {
@@ -13,7 +13,9 @@ function makeButtons(ammount, fl, tp) {
 
     for(var i = 0; i < ammount; i++) {
         var j = i + 1;
-        buttons += '<li class="' + 'no' + j + '"><div class="input-btn">';
+        buttons += '<li class="no' + ('0' + j).slice(-2) + ' ';
+        buttons += 'lvl' + Math.ceil(j / 8);
+        buttons += '"><div class="input-btn">';
         if (fl) {
             buttons += '<button class="flash">Flash</button>';
         }
@@ -26,6 +28,14 @@ function makeButtons(ammount, fl, tp) {
     buttons += '</ol>';
 
     return buttons;
+}
+
+function ResultAdd(lvl) {
+    return score + lvl;
+}
+
+function getDifficulty(button) {
+    return button.className.charAt(8);
 }
 
 function sortTable() {
