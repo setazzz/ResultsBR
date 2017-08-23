@@ -13,7 +13,7 @@ function singleTableLineOutput($routes, $results, $climberNumber, $specChal) {
     $thisClimber = $results[$climberNumber];
     $score = intval($thisClimber->total);
 
-    echo '<tr><td class="column-name">' . $thisClimber->name . '</td>';
+    echo '<tr class="row"><td class="column-name">' . $thisClimber->name . '</td>';
     for ($i = 0; $i < $routes; $i++) {
         echo '<td class="column-route lvl';
         echo ceil(($i + 1) / 8) . '">';
