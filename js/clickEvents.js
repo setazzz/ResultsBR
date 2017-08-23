@@ -4,7 +4,6 @@
 
 // result button click event
 // marks the selected result with a className 'y'
-// TODO !!! next/previous should be changed
 $('ol').click(function (e) {
     if (e.target.tagName === 'BUTTON') {
         const button = e.target;
@@ -141,3 +140,27 @@ $('.clear').click(function() {
     }
     $('.score').html(scoreDisplay(score = 0));
 }); //end clear click
+
+// Hide button click event
+// Hides column-route culumns
+$('.hideBtn').click(function (e) {
+    var button = e.target;
+    console.log(button.classList.contains('hidden'));
+    if (!button.classList.contains('hidden')) {
+        for (var i = 0; i < $('.column-route').length; i++) {
+            $('.column-route')[i].classList.add('hide');
+        }
+        for (var i = 0; i < $('.column-chal').length; i++) {
+            $('.column-chal')[i].classList.add('hide');
+        }
+        button.classList.add('hidden')
+    } else {
+        for (var i = 0; i < $('.column-route').length; i++) {
+            $('.column-route')[i].classList.remove('hide');
+        }
+        for (var i = 0; i < $('.column-chal').length; i++) {
+            $('.column-chal')[i].classList.remove('hide');
+        }
+        button.classList.remove('hidden')
+    }
+});

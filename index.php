@@ -5,7 +5,7 @@
     <?php include('inc/Head.html'); ?>
 </head>
 <body>
-    <div id="settings" style="display: none">
+    <div id="settings" class="hide">
         <?php
             include ('UserFormSettings.php');
             echo htmlspecialchars($output);

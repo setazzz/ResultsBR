@@ -5,15 +5,16 @@
     <?php include('inc/Head.html'); ?>
 </head>
 <body style="max-width: 100%">
-<div id="settings" style="display: none">
-    <?php
-    include ('UserFormSettings.php');
-    echo htmlspecialchars($output);
-    ?>
-</div>
+    <div id="settings" class="hide">
+        <?php
+        include ('UserFormSettings.php');
+        echo htmlspecialchars($output);
+        ?>
+    </div>
+    <button class="hideBtn">Hide routes</button>
     <?php include 'resultsTableOutput.php';?>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/clickEvents.js"></script>
     <script src="js/sort.js"></script>
 </body>
 </html>
