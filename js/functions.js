@@ -2,18 +2,17 @@
  * Created by Matas on 2017.08.08.
  */
 
-
-
 function scoreDisplay (flash) {
     return 'Your score: ' + flash;
 }
 
 function makeButtons(ammount, fl, tp) {
-    buttons += '<ol class="buttons">';
+    var buttons = '<ol class="buttons">';
 
     for(var i = 0; i < ammount; i++) {
         var j = i + 1;
-        buttons += '<li class="no' + ('0' + j).slice(-2) + ' ';
+        buttons += '<li id="no' + ('0' + j).slice(-2);
+        buttons += '" class="';
         buttons += 'lvl' + Math.ceil(j / 8);
         buttons += '"><div class="input-btn">';
         if (fl) {
@@ -24,7 +23,6 @@ function makeButtons(ammount, fl, tp) {
         }
         buttons += '</div></li>';
     }
-
     buttons += '</ol>';
 
     return buttons;
@@ -35,7 +33,7 @@ function ResultAdd(lvl) {
 }
 
 function getDifficulty(button) {
-    return button.className.charAt(8);
+    return button.className.charAt(3);
 }
 
 function sortTable() {

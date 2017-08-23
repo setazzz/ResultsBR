@@ -3,7 +3,7 @@
  */
 
 // result button click event
-// marks the selected result with a className 'Y'
+// marks the selected result with a className 'y'
 // TODO !!! next/previous should be changed
 $('ol').click(function (e) {
     if (e.target.tagName === 'BUTTON') {
@@ -25,6 +25,7 @@ $('ol').click(function (e) {
                 } else {
                     button.classList.remove('y');
                     score -= points * 1.2;
+                    console.log(score);
                 }
             },
             Top: function () {
@@ -65,17 +66,19 @@ $('.submit').click(function() {
     }
 
     // check if Name is entered
-    if (climberName.replace(/\s/g, '') === '') {
+    if (!climberName.replace(/\s/g, '') === '') {
         alert('Please enter Your name.');
-    } else if(!checked) {
+    } else if(checked) {
         alert('Please select your gender.');
     } else {
         output.sex = climberSex;
         output.pro = climberPro;
         output.name = climberName;
         output.total = score;
+        var li = $('#no01');
+        console.log(li.children[1]);
         for (var i = 1; i <= numberOfRoutes; i++) {
-            var listButtons = $('.no' + i)[0].firstElementChild.children;
+            var listButtons = document.getElementById('no' + ('0' + i).slice(-2)).firstElementChild.children;
             if (listButtons[0].classList.contains('y')) {
                 output.result.push('F');
             } else if (listButtons[1].classList.contains('y')) {

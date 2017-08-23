@@ -5,14 +5,15 @@
  * Date: 2017.08.22
  * Time: 13:58
  */
+
 if(isset($_POST['output'])) {
     $new_input = $_POST['output'];
     $json = json_encode($new_input);
     $data = json_decode($json);
 
     $compName = $data->name;
-    $compDate = substr($data->date, 5);
-    $fileName = 'results/Results_' . str_replace(' ', '', $compName) . '_' . $compDate . '.json';
+    $compDate = $data->date;
+    $fileName = 'results/Results_' . $compDate . '_' . str_replace(' ', '', $compName) . '.json';
 
     $new_json = '{"collection":{"results":[';
     $new_json .= ']},"meta":';
