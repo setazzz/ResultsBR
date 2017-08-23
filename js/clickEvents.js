@@ -83,8 +83,6 @@ $('.submit').click(function() {
         output.pro = climberPro;
         output.name = climberName;
         output.total = score;
-        var li = $('#no01');
-        console.log(li.children[1]);
         for (var i = 1; i <= numberOfRoutes; i++) {
             var listButtons = document.getElementById('no' + ('0' + i).slice(-2)).firstElementChild.children;
             if (listButtons[0].classList.contains('y')) {
@@ -95,8 +93,6 @@ $('.submit').click(function() {
                 output.result.push('');
             }
         }
-
-        console.log(output);
 
         // Post results to saveResults.php
         $.ajax({

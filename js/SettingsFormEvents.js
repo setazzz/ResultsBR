@@ -14,7 +14,6 @@ $('#submitBtn').click(function(e) {
     var numberOfRoutes = $('#numberOfRoutes').val();
     var specChal = $('#specChal:checked').length;
     var specChalPoints = $('#specChalPoints').val();
-    console.log(specChal);
     var valid = false;
 
     if (compName && compDate && startTime && endTime && numberOfRoutes) {
@@ -33,22 +32,13 @@ $('#submitBtn').click(function(e) {
         output.specChal = specChal;
         output.specChalPoints = specChalPoints;
 
-        // json_stringify(output);
-
-        console.log(output);
-
         // Post results to saveResults.php
         $.ajax({
             type: 'POST',
             url: 'saveCompData.php',
             data: {'output': output},
             success: function(msg) {
-                // $('.input-content')[0].classList.add('hide');
-                // $('form')[0].classList.add('hide');
-
-                // $('.output').html(successMsg);
                 // alert('Your result was successfully saved. To see full results press the link at the bottom of a page.');
-                console.log('success');
             },
             failure: function (errMsg) {
                 alert(errMsg);

@@ -27,7 +27,10 @@
 <!--</div>-->
 <!--<p class="output"></p>-->
 
-<?php include('inc/Scripts.html'); ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/clickEvents.js"></script>
+<script src="js/jquery.sticky.js"></script>
 <script src="js/SettingsFormEvents.js"></script>
 </body>
 </html>
