@@ -25,7 +25,6 @@ $('ol').click(function (e) {
                 } else {
                     button.classList.remove('y');
                     score -= points * 1.2;
-                    console.log(score);
                 }
             },
             Top: function () {

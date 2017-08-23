@@ -62,8 +62,11 @@ th.column-route.lvl5 {
 button.specChal,
 th.column-chal{
     background-color: orange;
-    width: 98%;
     max-width: 98%;
+}
+
+button.specChal {
+    width: 98%;
 }
 
 ol {
@@ -186,7 +189,7 @@ ul li {
 /* big screen */
 @media only screen and (min-width: 1024px) {
     body {
-        background-color: red;
+        /*background-color: red;*/
     }
 }
 

@@ -9,9 +9,6 @@ $specChal = false;
 if($meta->specChal == 1) {
     $specChal = $meta->specChalPoints;
 }
-//var_dump($allResults);
-//var_dump($specChal);
-//die;
 function singleTableLineOutput($routes, $results, $climberNumber, $specChal) {
     $thisClimber = $results[$climberNumber];
     $score = intval($thisClimber->total);
@@ -27,7 +24,7 @@ function singleTableLineOutput($routes, $results, $climberNumber, $specChal) {
         }
     }
     if($specChal) {
-        echo '<td class="column-chal">' . $specChal . '</td>';
+        echo '<td class="column-chal">+</td>';
     } else {
         echo '<td class="column-chal"></td>';
     }
@@ -39,12 +36,8 @@ function singleTableLineOutput($routes, $results, $climberNumber, $specChal) {
     echo '</td></tr>';
 }
 
-
 //Header
 echo '<h1>' . $meta->name . '</h1>';
-
-
-
 
 // Start a table and put headings
 echo '<table id="male"><thead><tr><th class="column-name">Name</th>';
@@ -62,12 +55,9 @@ if($meta->specChal == 1) {
     echo '<th class="column-chal">Spec</th>';
 }
 
-echo '<th class="column-result">Score</th>
-      <th class="column-pro">Pro</th>
+echo '<th class="column-score">Score</th>
+      <th class="column-place">Place</th>
       </tr></thead><tbody>';
-
-
-
 
 // loop through AllResults.json and display results to the table
 for ($i = 0; $i < $numberOfInputs; $i++) {

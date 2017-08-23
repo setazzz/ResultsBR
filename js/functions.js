@@ -8,7 +8,7 @@ function scoreDisplay (flash) {
 
 function makeButtons(ammount, fl, tp) {
     var specChal = false;
-    if (json.specChal == 1) {
+    if (json.specChal === 1) {
         specChal = true;
     }
     var buttons = '<ol class="buttons">';
@@ -31,10 +31,6 @@ function makeButtons(ammount, fl, tp) {
     buttons += '</ol>';
 
     return buttons;
-}
-
-function ResultAdd(lvl) {
-    return score + lvl;
 }
 
 function getDifficulty(button) {
