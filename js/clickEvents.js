@@ -60,7 +60,7 @@ $('ol').click(function (e) {
 // creates a json string and saves it
 $('.submit').click(function() {
     // declare vars
-    var output = {result: [], total: 0};
+    var output = {result: [], total: 0, specChal: 0};
     var climberName = $("#userName").val();
     var climberPro = $("#userGroup:checked").length;
     var radios = $('[name=userSex]');
@@ -145,7 +145,6 @@ $('.clear').click(function() {
 // Hides column-route culumns
 $('.hideBtn').click(function (e) {
     var button = e.target;
-    console.log(button.classList.contains('hidden'));
     if (!button.classList.contains('hidden')) {
         for (var i = 0; i < $('.column-route').length; i++) {
             $('.column-route')[i].classList.add('hide');
