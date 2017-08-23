@@ -31,10 +31,10 @@ function singleTableLineOutput($routes, $results, $climberNumber, $specChal) {
     } else {
         echo '<td class="column-chal"></td>';
     }
-    echo '<td class="column-result">' . $score . '</td>';
-    echo '<td class="column-pro">';
+    echo '<td class="column-score">' . $score . '</td>';
+    echo '<td class="column-place">';
     if ($thisClimber->pro == '1') {
-        echo '+';
+        echo '-';
     }
     echo '</td></tr>';
 }
@@ -50,7 +50,7 @@ echo '<h1>' . $meta->name . '</h1>';
 echo '<table id="male"><thead><tr><th class="column-name">Name</th>';
 for ($i = 0; $i < $numberOfRoutes; $i++) {
     $routeNumber = $i + 1;
-    echo '<td class="column-route lvl';
+    echo '<th class="column-route lvl';
     echo ceil(($i + 1) / 8) . '">';
     if ($routeNumber) {
         echo $routeNumber;

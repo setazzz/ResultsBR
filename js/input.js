@@ -11,3 +11,7 @@ $('.routes').html(makeButtons(numberOfRoutes, flash, top));
 
 $('.score').html(scoreDisplay(score));
 $('.title').html(json.name);
+$('.date').html(json.date);
+$(document).ready(function(){
+    $("#score-top").sticky({topSpacing:0});
+});

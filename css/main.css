@@ -2,18 +2,20 @@
 
 * {
     /*border: solid red 2px;*/
+    background-color: rgb(215, 255, 253);
 }
 
 body {
-    background-color: rgba(0, 255, 255, 0.1);
     max-width: 510px;
     margin: auto;
     font-family: sans-serif;
 }
 
-h1 {
+h1,
+h3 {
     text-align: center;
 }
+
 
 button {
     font-size: 2em;
@@ -23,33 +25,45 @@ button {
     max-width: 200px;
 }
 
+#score-top {
+    /*border: solid black;*/
+    padding: 0.2em 0;
+}
+
 
 
 .lvl1 button,
-.column-route.lvl1 {
+th.column-route.lvl1 {
     background-color: green;
 }
 
 .lvl2 button,
-.column-route.lvl2 {
+th.column-route.lvl2 {
     background-color: yellow;
 }
 
 .lvl3 button,
-.column-route.lvl3  {
+th.column-route.lvl3  {
     background-color: blue;
     color: white;
 }
 
 .lvl4 button,
-.column-route.lvl4 {
+th.column-route.lvl4 {
     background-color: red;
 }
 
 .lvl5 button,
-.column-route.lvl5 {
+th.column-route.lvl5 {
     background-color: black;
     color: white;
+}
+
+button.specChal,
+th.column-chal{
+    background-color: orange;
+    width: 98%;
+    max-width: 98%;
 }
 
 ol {
@@ -70,9 +84,8 @@ table {
 
 
 .column-route,
-.column-flash,
-.column-top,
-.column-bonus,
+.column-chal,
+.column-score,
 .column-pro {
     text-align: center;
 }
@@ -87,8 +100,7 @@ table {
 }
 
 .column-flash,
-.column-top,
-.column-bonus {
+.column-top {
     min-width: 2em;
 }
 
@@ -101,11 +113,7 @@ ol button{
     margin: 0 1%;
 }
 
-button.specChal {
-    background-color: orange;
-    width: 98%;
-    max-width: 98%;
-}
+
 
 .input-btn {
     margin:auto;
@@ -169,6 +177,8 @@ ul li {
 #userName {
     font-size: 1.5rem;
     width: 100%;
+    background-color: white;
+    border: solid blue 1px;
 }
 
 /* Responsive ---------------------- */

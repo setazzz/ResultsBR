@@ -5,17 +5,23 @@
     <?php include('inc/Head.html'); ?>
 </head>
 <body>
-<div id="settings" style="display: none">
-    <?php
-        include ('UserFormSettings.php');
-        echo htmlspecialchars($output);
-    ?>
-</div>
+    <div id="settings" style="display: none">
+        <?php
+            include ('UserFormSettings.php');
+            echo htmlspecialchars($output);
+        ?>
+    </div>
     <h1 class="title"></h1>
+    <h3 class="date"></h3>
     <?php include('inc/UserInputForm.html'); ?>
     <a href="results.php" target="_blank">Results</a>
     <div class="input-content">
-        <p class="score" id="score-top"></p>
+
+
+        <div class="score" id="score-top"></div>
+
+
+
         <div class="routes">
         </div>
         <p class="score"></p>
@@ -30,5 +36,6 @@
     <script src="js/functions.js"></script>
     <script src="js/input.js"></script>
     <script src="js/clickEvents.js"></script>
+    <script src="js/jquery.sticky.js"></script>
 </body>
 </html>
