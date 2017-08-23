@@ -23,6 +23,8 @@ button {
     max-width: 200px;
 }
 
+
+
 .lvl1 button,
 .column-route.lvl1 {
     background-color: green;
@@ -56,7 +58,7 @@ ol {
 
 /* Table styles ----------------- */
 table * {
-    border: solid blue 1px;
+    border: solid black 1px;
 }
 
 table {
@@ -99,12 +101,19 @@ ol button{
     margin: 0 1%;
 }
 
+button.specChal {
+    background-color: orange;
+    width: 98%;
+    max-width: 98%;
+}
+
 .input-btn {
     margin:auto;
 }
 
 button.y {
-    background-color: blueviolet;
+    background-color: deeppink;
+    color: white;
 }
 
 ol li {

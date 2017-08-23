@@ -8,12 +8,8 @@
 
 if(isset($_POST['output'])) {
 
-    date_default_timezone_set('Europe/Vilnius');
-    $dateNow = date('Y-m-d', time());
-    $timeNow = date('H:i', time());
-    $fileExists = false;
-    $filesList = scandir('results/');
-    $settings = '';
+    include ('UserFormSettings.php');
+
 
 //get current comp results file name
     foreach ($filesList as $file) {

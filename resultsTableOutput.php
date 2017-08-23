@@ -1,11 +1,18 @@
 <?php
-
-$allResults = json_decode(file_get_contents('JSON/AllResults.json'))->collection->results;
-$meta = json_decode(file_get_contents('JSON/AllResults.json'))->meta;
+include ('UserFormSettings.php');
+$file = json_decode(file_get_contents($currentResultsFile));
+$allResults = $file->collection->results;
+$meta = $file->meta;
 $numberOfRoutes = $meta->numberOfRoutes;
 $numberOfInputs = count((array)$allResults);
-
-function singleTableLineOutput($routes, $results, $climberNumber) {
+$specChal = false;
+if($meta->specChal == 1) {
+    $specChal = $meta->specChalPoints;
+}
+//var_dump($allResults);
+//var_dump($specChal);
+//die;
+function singleTableLineOutput($routes, $results, $climberNumber, $specChal) {
     $thisClimber = $results[$climberNumber];
     $score = intval($thisClimber->total);
 
@@ -18,6 +25,11 @@ function singleTableLineOutput($routes, $results, $climberNumber) {
         } else {
             echo '</td>';
         }
+    }
+    if($specChal) {
+        echo '<td class="column-chal">' . $specChal . '</td>';
+    } else {
+        echo '<td class="column-chal"></td>';
     }
     echo '<td class="column-result">' . $score . '</td>';
     echo '<td class="column-pro">';
@@ -44,8 +56,13 @@ for ($i = 0; $i < $numberOfRoutes; $i++) {
         echo $routeNumber;
     } else {
         echo '</td>';
-    }}
-echo '<th class="column-result">Flash</th>
+    }
+}
+if($meta->specChal == 1) {
+    echo '<th class="column-chal">Spec</th>';
+}
+
+echo '<th class="column-result">Score</th>
       <th class="column-pro">Pro</th>
       </tr></thead><tbody>';
 
@@ -55,7 +72,7 @@ echo '<th class="column-result">Flash</th>
 // loop through AllResults.json and display results to the table
 for ($i = 0; $i < $numberOfInputs; $i++) {
     if ($allResults[$i]->sex == 'male') {
-        singleTableLineOutput($numberOfRoutes, $allResults, $i);
+        singleTableLineOutput($numberOfRoutes, $allResults, $i, $specChal);
     }
 }
 

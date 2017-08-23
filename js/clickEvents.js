@@ -9,9 +9,9 @@ $('ol').click(function (e) {
     if (e.target.tagName === 'BUTTON') {
         const button = e.target;
         const li = button.parentNode.parentNode;
-        const ul = li.parentNode;
+        // const ul = li.parentNode;
         const action = button.textContent;
-        const points = getDifficulty(li) * 10;
+        const points = getDifficulty(button) * 10;
         const selected = button.classList.contains('y');
         const nameActions = {
             Flash: function () {
@@ -36,6 +36,16 @@ $('ol').click(function (e) {
                     }
                     button.classList.add('y');
                     score += points;
+                } else {
+                    button.classList.remove('y');
+                    score -= points;
+                }
+            },
+            "Special Challenge": function () {
+                if (!selected) {
+                    button.classList.add('y');
+                    score += points;
+
                 } else {
                     button.classList.remove('y');
                     score -= points;
@@ -66,9 +76,9 @@ $('.submit').click(function() {
     }
 
     // check if Name is entered
-    if (!climberName.replace(/\s/g, '') === '') {
+    if (climberName.replace(/\s/g, '') === '') {
         alert('Please enter Your name.');
-    } else if(checked) {
+    } else if(!checked) {
         alert('Please select your gender.');
     } else {
         output.sex = climberSex;
