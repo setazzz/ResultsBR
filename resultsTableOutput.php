@@ -5,97 +5,56 @@ $allResults = $file->collection->results;
 $meta = $file->meta;
 $numberOfRoutes = $meta->numberOfRoutes;
 $numberOfInputs = count((array)$allResults);
-$specChal = false;
-if($meta->specChal == 1) {
-    $specChal = $meta->specChalPoints;
-}
-function singleTableLineOutput($routes, $results, $climberNumber, $specChal) {
-    $thisClimber = $results[$climberNumber];
-    $score = intval($thisClimber->total);
+$specChal = ($meta->specChal == 1) ? $meta->specChal : false;
 
-    echo '<tr class="row"><td class="column-name">' . $thisClimber->name . '</td>';
+function singleTableOutput($routes, $results, $specChal, $sex) {
+    $output = '';
+
+    $output .= '<table id="' . $sex . '"><thead><tr><th class="column-name">Name</th>';
     for ($i = 0; $i < $routes; $i++) {
-        echo '<td class="column-route lvl';
-        echo ceil(($i + 1) / 8) . '">';
-        if ($thisClimber->result[$i]) {
-            echo $thisClimber->result[$i];
+        $routeNumber = $i + 1;
+        $output .= '<th class="column-route lvl';
+        $output .= ceil(($i + 1) / 8) . '">';
+        if ($routeNumber <= $routes) {
+            $output .= $routeNumber . '</th>';
         } else {
-            echo '</td>';
+            $output .= '</th>';
         }
     }
-    if($specChal) {
-        echo '<td class="column-chal">+</td>';
-    } else {
-        echo '<td class="column-chal"></td>';
-    }
-    echo '<td class="column-score">' . $score . '</td>';
-    echo '<td class="column-place">';
-    if ($thisClimber->pro == '1') {
-        echo '-';
-    }
-    echo '</td></tr>';
-}
-
-//Header
-echo '<h1>' . $meta->name . '</h1>';
-
-// Start a table and put headings
-echo '<table id="male"><thead><tr><th class="column-name">Name</th>';
-for ($i = 0; $i < $numberOfRoutes; $i++) {
-    $routeNumber = $i + 1;
-    echo '<th class="column-route lvl';
-    echo ceil(($i + 1) / 8) . '">';
-    if ($routeNumber) {
-        echo $routeNumber;
-    } else {
-        echo '</td>';
-    }
-}
-if($meta->specChal == 1) {
-    echo '<th class="column-chal">Spec</th>';
-}
-
-echo '<th class="column-score">Score</th>
+    $output .= ($specChal == 1) ? '<th class="column-chal">Spec</th>': '';
+    $output .= '<th class="column-score">Score</th>
       <th class="column-place">Place</th>
       </tr></thead><tbody>';
 
-// loop through AllResults.json and display results to the table
-for ($i = 0; $i < $numberOfInputs; $i++) {
-    if ($allResults[$i]->sex == 'male') {
-        singleTableLineOutput($numberOfRoutes, $allResults, $i, $specChal);
+    for ($j = 0; $j < count($results); $j++) {
+        if ($results[$j]->sex == $sex) {
+            $thisClimber = $results[$j];
+            $singleLineOutput = '';
+            $singleLineOutput .= '<tr class="row"><td class="column-name">' . $thisClimber->name . '</td>';
+            for ($k = 0; $k < $routes; $k++) {
+                $singleLineOutput .= '<td class="column-route lvl';
+                $singleLineOutput .= ceil(($k + 1) / 8) . '">';
+                if ($thisClimber->result[$k]) {
+                    $singleLineOutput .= $thisClimber->result[$k] . '</td>';
+                } else {
+                    $singleLineOutput .= '</td>';
+                }
+            }
+            if($specChal) {
+                $singleLineOutput .= '<td class="column-chal">+</td>';
+            } else {
+                $singleLineOutput .= '<td class="column-chal"></td>';
+            }
+            $singleLineOutput .= '<td class="column-score">' . $thisClimber->total . '</td>';
+            $singleLineOutput .= '<td class="column-place">';
+            if ($thisClimber->pro == '1') {
+                $singleLineOutput .= '-';
+            }
+            $singleLineOutput .= '</td></tr>';
+            $output .= $singleLineOutput;
+        }
     }
+    $output .= '</tbody></table>';
+    return $output;
 }
 
-// end a table
-echo '</tbody></table>';
-
-
-// Start a table and put headings
-echo '<table id="female"><thead><tr><th class="column-name">Name</th>';
-for ($i = 0; $i < $numberOfRoutes; $i++) {
-    $routeNumber = $i + 1;
-    echo '<th class="column-route lvl';
-    echo ceil(($i + 1) / 8) . '">';
-    if ($routeNumber) {
-        echo $routeNumber;
-    } else {
-        echo '</td>';
-    }
-}
-if($meta->specChal == 1) {
-    echo '<th class="column-chal">Spec</th>';
-}
-
-echo '<th class="column-score">Score</th>
-      <th class="column-place">Place</th>
-      </tr></thead><tbody>';
-
-// loop through AllResults.json and display results to the table
-for ($i = 0; $i < $numberOfInputs; $i++) {
-    if ($allResults[$i]->sex == 'female') {
-        singleTableLineOutput($numberOfRoutes, $allResults, $i, $specChal);
-    }
-}
-
-// end a table
-echo '</tbody></table>';
