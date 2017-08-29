@@ -5,19 +5,19 @@
     <?php include('inc/Head.html'); ?>
 </head>
 <body style="max-width: 100%">
-    <div id="settings" class="hide">
+    <div id="settings" style="display: none">
         <?php
         include ('UserFormSettings.php');
-        echo htmlspecialchars($output);
+        echo htmlspecialchars($meta);
         ?>
     </div>
     <button class="hideBtn">Hide routes</button>
-    <h1 class="title"><?php echo $meta->name;?></h1>
-    <h3 class="date"><?php echo $meta->date;?></h3>
+    <h1 class="title"><?php echo $comp['name'];?></h1>
+    <h3 class="date"><?php echo $comp['date'];?></h3>
     <a href="index.php">Enter Your result</a>
         <?php include 'resultsTableOutput.php';
-            echo singleTableOutput($numberOfRoutes, $allResults, $specChal, 'male');
-            echo singleTableOutput($numberOfRoutes, $allResults, $specChal, 'female');
+            echo singleTableOutput($numberOfRoutes, $allResultsMale, $specChal, 'male');
+            echo singleTableOutput($numberOfRoutes, $allResultsFemale, $specChal, 'female');
         ?>
     <a href="results/Results_2017-08-25_BouldeRingas.json" download>Download file</a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

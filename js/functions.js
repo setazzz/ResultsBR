@@ -6,11 +6,7 @@ function scoreDisplay (flash) {
     return 'Your score: ' + flash;
 }
 
-function makeButtons(ammount, fl, tp) {
-    var specChal = false;
-    if (json.specChal === 1) {
-        specChal = true;
-    }
+function makeButtons(ammount) {
     var buttons = '<ol class="buttons">';
 
     for(var i = 0; i < ammount; i++) {
@@ -19,15 +15,13 @@ function makeButtons(ammount, fl, tp) {
         buttons += '" class="';
         buttons += 'lvl' + Math.ceil(j / 8);
         buttons += '"><div class="input-btn">';
-        if (fl) {
-            buttons += '<button class="flash">Flash</button>';
-        }
-        if (tp) {
-            buttons += '<button class="top">Top</button>';
-        }
+        buttons += '<button class="flash">Flash</button>';
+        buttons += '<button class="top">Top</button>';
         buttons += '</div></li>';
     }
-    buttons += '<button class="specChal">Special Challenge</button>';
+    if (json.spec_chal == 1) {
+        buttons += '<button class="specChal">Special Challenge</button>';
+    }
     buttons += '</ol>';
 
     return buttons;
@@ -36,7 +30,7 @@ function makeButtons(ammount, fl, tp) {
 function getDifficulty(button) {
     var value;
     if (button.classList.contains('specChal')) {
-        value = json.specChalPoints / 10;
+        value = json.spec_chal_points / 10;
     } else {
         value = button.parentNode.parentNode.className.charAt(3);
     }

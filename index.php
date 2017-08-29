@@ -5,10 +5,10 @@
     <?php include('inc/Head.html'); ?>
 </head>
 <body>
-    <div id="settings" class="hide">
+    <div id="settings" style="display: none">
         <?php
             include ('UserFormSettings.php');
-            echo htmlspecialchars($output);
+            echo htmlspecialchars($meta);
         ?>
     </div>
     <h1 class="title"></h1>

@@ -60,7 +60,7 @@ $('ol').click(function (e) {
 // creates a json string and saves it
 $('.submit').click(function() {
     // declare vars
-    var output = {result: [], total: 0, specChal: 0};
+    var output = {result: '', total: 0, specChal: 0};
     var climberName = $("#userName").val();
     var climberPro = $("#userGroup:checked").length;
     var radios = $('[name=userSex]');
@@ -83,14 +83,19 @@ $('.submit').click(function() {
         output.pro = climberPro;
         output.name = climberName;
         output.total = score;
+
+        if ($('.specChal')[0].classList.contains('y')) {
+            output.specChal = 1;
+        }
+
         for (var i = 1; i <= numberOfRoutes; i++) {
             var listButtons = document.getElementById('no' + ('0' + i).slice(-2)).firstElementChild.children;
             if (listButtons[0].classList.contains('y')) {
-                output.result.push('F');
+                output.result += 'F';
             } else if (listButtons[1].classList.contains('y')) {
-                output.result.push('T');
+                output.result += 'T';
             } else {
-                output.result.push('');
+                output.result += '0';
             }
         }
 

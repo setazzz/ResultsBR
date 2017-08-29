@@ -10,5 +10,5 @@ $user = 'root';
 $pass = '';
 $db = 'resultsbr_database';
 
-$db = new mysqli('localhost', $user, $pass, $db) or die('Unable to connect');
+$connection = new mysqli('localhost', $user, $pass, $db) or die('Unable to connect');
 

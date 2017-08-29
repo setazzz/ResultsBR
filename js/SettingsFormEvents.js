@@ -4,7 +4,7 @@
 // submit button click event
 // creates a json string and saves it
 $('#submitBtn').click(function(e) {
-    e.preventDefault();
+    // e.preventDefault();
     // declare vars
     var compName = $('#compName').val();
     var output = {name: compName};
@@ -38,10 +38,10 @@ $('#submitBtn').click(function(e) {
             url: 'saveCompData.php',
             data: {'output': output},
             success: function(msg) {
-                // alert('Your result was successfully saved. To see full results press the link at the bottom of a page.');
+                alert(JSON.stringify(output));
             },
             failure: function (errMsg) {
-                alert(errMsg);
+                alert(errMsg + 'a');
             }
         });
 
