@@ -12,4 +12,3 @@ if (!(myData.indexOf('id') > -1)) {
 } else {
     var json = JSON.parse(myData);
 }
-

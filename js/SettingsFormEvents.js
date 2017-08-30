@@ -1,10 +1,12 @@
 /**
  * Created by Matas on 2017.08.22.
  */
+
 // submit button click event
 // creates a json string and saves it
 $('#submitBtn').click(function(e) {
-    // e.preventDefault();
+    e.preventDefault();
+
     // declare vars
     var compName = $('#compName').val();
     var output = {name: compName};
@@ -24,7 +26,6 @@ $('#submitBtn').click(function(e) {
     if(!valid) {
         alert('Please fill all fields.');
     } else {
-        // output.name = compName;
         output.date = compDate;
         output.startTime = startTime;
         output.endTime = endTime;
@@ -35,16 +36,14 @@ $('#submitBtn').click(function(e) {
         // Post results to saveResults.php
         $.ajax({
             type: 'POST',
-            url: 'saveCompData.php',
+            url: 'saveSettings.php',
             data: {'output': output},
             success: function(msg) {
-                alert(JSON.stringify(output));
+                alert('New competition ' + compName + ' succesfully created.');
             },
             failure: function (errMsg) {
-                alert(errMsg + 'a');
+                alert(errMsg);
             }
         });
-
     }
-
 }); //end submit click

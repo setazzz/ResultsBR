@@ -24,7 +24,8 @@ if(isset($_POST['output'])) {
     $sex = $json['sex'];
     $pro = $json['pro'];
 
-    $sql = "INSERT INTO $tableName(name, result, total, spec_chal, sex, pro) VALUES('$name', '$result', $total, '$specChal', '$sex', '$pro')";
+    $sql = "INSERT INTO $tableName(name, result, total, spec_chal, sex, pro)
+                            VALUES('$name', '$result', $total, '$specChal', '$sex', '$pro')";
 
     $connection->query($sql);
 

@@ -21,11 +21,7 @@
         <?php include('inc/UserInputForm.html'); ?>
 
         <div class="score" id="score-top"></div>
-
-
-
-        <div class="routes">
-        </div>
+        <div class="routes"></div>
         <p class="score"></p>
         <div class="entry-buttons">
             <button class="clear">Clear</button><button class="submit">Submit</button>

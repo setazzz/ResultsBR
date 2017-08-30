@@ -84,10 +84,11 @@ $('.submit').click(function() {
         output.name = climberName;
         output.total = score;
 
-        if ($('.specChal')[0].classList.contains('y')) {
-            output.specChal = 1;
+        if (json.spec_chal != 0) {
+            if ($('.specChal')[0].classList.contains('y')) {
+                output.specChal = 1;
+            }
         }
-
         for (var i = 1; i <= numberOfRoutes; i++) {
             var listButtons = document.getElementById('no' + ('0' + i).slice(-2)).firstElementChild.children;
             if (listButtons[0].classList.contains('y')) {

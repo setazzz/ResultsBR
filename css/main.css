@@ -16,7 +16,6 @@ h3 {
     text-align: center;
 }
 
-
 button {
     font-size: 2em;
     border-style: solid;
@@ -29,8 +28,6 @@ button {
     /*border: solid black;*/
     padding: 0.2em 0;
 }
-
-
 
 .lvl1 button,
 th.column-route.lvl1 {
@@ -84,8 +81,6 @@ table {
     border: solid blue 1px;
 }
 
-
-
 .column-route,
 .column-chal,
 .column-score,
@@ -115,8 +110,6 @@ ol button{
     width: 48%;
     margin: 0 1%;
 }
-
-
 
 .input-btn {
     margin:auto;

@@ -17,7 +17,6 @@
     <?php include('inc/SettingsForm.html'); ?>
     <a href="results.php" target="_blank">Results</a><br>
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/clickEvents.js"></script>

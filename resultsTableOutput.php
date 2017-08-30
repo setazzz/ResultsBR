@@ -33,7 +33,6 @@ if (isset($_GET['name']) && isset($_GET['date'])) {
 function singleTableOutput($routes, $results, $specChal, $sex) {
     if ($results->num_rows != 0) {
         $output = '';
-
         $output .= '<table id="' . $sex . '"><thead><tr><th class="column-name">Name</th>';
         for ($i = 0; $i < $routes; $i++) {
             $routeNumber = $i + 1;
@@ -49,7 +48,6 @@ function singleTableOutput($routes, $results, $specChal, $sex) {
         $output .= '<th class="column-score">Score</th>
         <th class="column-place">Place</th>
         </tr></thead><tbody>';
-
 
         if ($results->num_rows > 0) {
             while ($row = $results->fetch_assoc()) {
@@ -79,13 +77,9 @@ function singleTableOutput($routes, $results, $specChal, $sex) {
                 $output .= $singleLineOutput;
             }
         }
-
         $output .= '</tbody></table>';
         return $output;
     } else {
         echo 'No results in ' . $sex . ' group yet.<br>';
     }
-
-
 }
-
