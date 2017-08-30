@@ -11,15 +11,16 @@
         echo htmlspecialchars($meta);
         ?>
     </div>
-    <button class="hideBtn">Hide routes</button>
-    <h1 class="title"><?php echo $comp['name'];?></h1>
-    <h3 class="date"><?php echo $comp['date'];?></h3>
-    <a href="index.php">Enter Your result</a>
+    <div class="main-content">
+        <button class="hideBtn">Hide routes</button>
+        <h1 class="title"><?php echo $comp['name'];?></h1>
+        <h3 class="date"><?php echo $comp['date'];?></h3>
+        <a href="index.php">Enter Your result</a>
+    </div>
         <?php include 'resultsTableOutput.php';
-            echo singleTableOutput($numberOfRoutes, $allResultsMale, $specChal, 'male');
-            echo singleTableOutput($numberOfRoutes, $allResultsFemale, $specChal, 'female');
+                echo singleTableOutput($numberOfRoutes, $allResultsMale, $specChal, 'male');
+                echo singleTableOutput($numberOfRoutes, $allResultsFemale, $specChal, 'female');
         ?>
-    <a href="results/Results_2017-08-25_BouldeRingas.json" download>Download file</a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/clickEvents.js"></script>
     <script src="js/sort.js"></script>

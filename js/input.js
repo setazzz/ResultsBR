@@ -1,16 +1,17 @@
 /**
  * Created by Matas on 2017.08.01.
  */
-var numberOfRoutes = json.number_of_routes;
+if (json) {
+    var numberOfRoutes = json.number_of_routes;
 
-var buttons = '';
-var score = 0;
+    var buttons = '';
+    var score = 0;
+    $('.routes').html(makeButtons(numberOfRoutes));
 
-$('.routes').html(makeButtons(numberOfRoutes));
-
-$('.score').html(scoreDisplay(score));
-$('.title').html(json.name);
-$('.date').html(json.date);
-$(document).ready(function(){
-    $("#score-top").sticky({topSpacing:0});
-});
+    $('.score').html(scoreDisplay(score));
+    $('.title').html(json.name);
+    $('.date').html(json.date);
+    $(document).ready(function(){
+        $("#score-top").sticky({topSpacing:0});
+    });
+}

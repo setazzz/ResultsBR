@@ -8,15 +8,17 @@
     <div id="settings" style="display: none">
         <?php
             include ('UserFormSettings.php');
-            echo htmlspecialchars($meta);
+            if (isset($meta)) {
+                echo htmlspecialchars($meta);
+            }
         ?>
     </div>
     <h1 class="title"></h1>
     <h3 class="date"></h3>
-    <?php include('inc/UserInputForm.html'); ?>
+
     <a href="results.php" target="_blank">Results</a>
     <div class="input-content">
-
+        <?php include('inc/UserInputForm.html'); ?>
 
         <div class="score" id="score-top"></div>
 

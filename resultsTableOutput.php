@@ -5,7 +5,7 @@ include ('inc/connection.php');
 //todo: fix hardcoded queries
 
 $allResults = $connection->query("SELECT * FROM test2");
-$meta = $connection->query("SELECT * FROM comps WHERE id = 1")->fetch_assoc();
+$meta = $connection->query("SELECT * FROM comps WHERE date = CURRENT_DATE ")->fetch_assoc();
 $numberOfRoutes = $meta['number_of_routes'];
 $specChal = $meta['spec_chal'];
 $numberOfInputs = count($allResults);
@@ -46,7 +46,7 @@ function singleTableOutput($routes, $results, $specChal, $sex) {
                         $singleLineOutput .= '</td>';
                     }
                 }
-                if($specChal) {
+                if($row['spec_chal']) {
                     $singleLineOutput .= '<td class="column-chal">+</td>';
                 } else {
                     $singleLineOutput .= '<td class="column-chal"></td>';

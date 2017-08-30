@@ -184,6 +184,11 @@ ul li {
     border: solid blue 1px;
 }
 
+.main-content {
+    max-width: 510px;
+    margin: auto;
+}
+
 /* Responsive ---------------------- */
 
 /* big screen */
