@@ -5,34 +5,18 @@
  * Date: 2017.08.07
  * Time: 14:40
  */
+include ('UserFormSettings.php');
+include ("inc/connection.php");
 
 if(isset($_POST['output'])) {
+    $meta = $connection->query("SELECT * FROM comps WHERE date = CURRENT_DATE ");
+    $meta = $meta->fetch_assoc();
 
-    include ('UserFormSettings.php');
-    include ("inc/connection.php");
-
-
-//get current comp results file name
-//    foreach ($filesList as $file) {
-//        $fileDate = substr($file, 8, 10);
-//
-//        if ($dateNow == $fileDate) {
-//            $currentResultsFile = 'results/' . $file;
-//            $fileExists = true;
-//        }
-//    }
-
+    $compName = strtolower($meta['name']);
+    $compDate = $meta['date'];
+    $tableName = $compName . str_replace('-', '', $compDate);
     $json = $_POST['output'];
 
-
-//    $file = $currentResultsFile;
-//    $results = json_decode(file_get_contents($currentResultsFile));
-//
-//    if (is_object($results->meta)) {
-//        $results->collection->results[] = $json;
-//    }
-
-//    $json = json_encode($results);
     $name = $json["name"];
     $result = $json['result'];
     $total = $json['total'];
@@ -40,18 +24,10 @@ if(isset($_POST['output'])) {
     $sex = $json['sex'];
     $pro = $json['pro'];
 
-//        file_put_contents('test.txt', $specChal);
-//die;
-    $sql = "INSERT INTO test2(climber_name, result, total, spec_chal, sex, pro) VALUES('$name', '$result', $total, $specChal, '$sex', $pro)";
+    $sql = "INSERT INTO $tableName(name, result, total, spec_chal, sex, pro) VALUES('$name', '$result', $total, '$specChal', '$sex', '$pro')";
 
     $connection->query($sql);
 
-//    if (mysqli_query($connection, $sql)) {
-//        file_put_contents('test.txt', $str);
-//    } else {
-//        file_put_contents('test.txt', "Error: " . $sql . " " . mysqli_error($connection));
-//    }
-//    header('location: resultsTableOutput.php');
 } else {
     echo '<h1>Access denied</h1>';
     echo '<a href="index.php">Įvesti rezultatą</a>';

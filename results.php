@@ -18,8 +18,8 @@
         <a href="index.php">Enter Your result</a>
     </div>
         <?php include 'resultsTableOutput.php';
-                echo singleTableOutput($numberOfRoutes, $allResultsMale, $specChal, 'male');
-                echo singleTableOutput($numberOfRoutes, $allResultsFemale, $specChal, 'female');
+            echo singleTableOutput($numberOfRoutes, $allResultsMale, $specChal, 'male');
+            echo singleTableOutput($numberOfRoutes, $allResultsFemale, $specChal, 'female');
         ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/clickEvents.js"></script>
