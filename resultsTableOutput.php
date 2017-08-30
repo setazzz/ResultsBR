@@ -33,7 +33,7 @@ if (isset($_GET['name']) && isset($_GET['date'])) {
 function singleTableOutput($routes, $results, $specChal, $sex) {
     if ($results->num_rows != 0) {
         $output = '';
-        $output .= '<table id="' . $sex . '"><thead><tr><th class="column-name">Name</th>';
+        $output .= '<table id="' . $sex . '" border="1" cellspacing="0" bordercolor="#222" id="list"><thead><tr><th class="column-name">Name</th>';
         for ($i = 0; $i < $routes; $i++) {
             $routeNumber = $i + 1;
             $output .= '<th class="column-route lvl';
@@ -63,10 +63,12 @@ function singleTableOutput($routes, $results, $specChal, $sex) {
                         $singleLineOutput .= '</td>';
                     }
                 }
-                if ($row['spec_chal']) {
-                    $singleLineOutput .= '<td class="column-chal">+</td>';
-                } else {
-                    $singleLineOutput .= '<td class="column-chal"></td>';
+                if ($specChal) {
+                    if ($row['spec_chal']) {
+                        $singleLineOutput .= '<td class="column-chal">+</td>';
+                    } else {
+                        $singleLineOutput .= '<td class="column-chal"></td>';
+                    }
                 }
                 $singleLineOutput .= '<td class="column-score">' . $thisClimber['total'] . '</td>';
                 $singleLineOutput .= '<td class="column-place">';

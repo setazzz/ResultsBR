@@ -17,11 +17,15 @@
         <h3 class="date"><?php echo $comp['date'];?></h3>
         <a href="index.php">Enter Your result</a>
     </div>
-        <?php include 'resultsTableOutput.php';
-            echo singleTableOutput($numberOfRoutes, $allResultsMale, $specChal, 'male');
-            echo singleTableOutput($numberOfRoutes, $allResultsFemale, $specChal, 'female');
-        ?>
+    <?php include 'resultsTableOutput.php';
+        echo '<div id="table_wrapper">';
+        echo singleTableOutput($numberOfRoutes, $allResultsMale, $specChal, 'male');
+        echo singleTableOutput($numberOfRoutes, $allResultsFemale, $specChal, 'female');
+        echo '</div>'
+    ?>
+    <button id="btnExport">Download</button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/SettingsUserInput.js"></script>
     <script src="js/clickEvents.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/sort.js"></script>
