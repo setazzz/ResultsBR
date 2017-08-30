@@ -22,15 +22,6 @@ if ($test !== 'comps') {
                             spec_chal_points VARCHAR (50)
                       )");
     echo 'Comps table created';
-}
-else
-{
+} else {
     echo "Comps table already exists";
 }
-
-
-
-//var_dump($test);
-
-
-
